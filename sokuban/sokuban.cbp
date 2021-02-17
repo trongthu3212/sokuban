@@ -31,8 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="externals/sdl2/include" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+			<Add directory="externals/sdl2/lib" />
+		</Linker>
+		<Unit filename="source/main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
