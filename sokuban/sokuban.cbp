@@ -38,6 +38,8 @@
 			<Add directory="externals/sdl2/lib" />
 		</Linker>
 		<Unit filename="source/main.cpp" />
+		<Unit filename="source/vec2d.cpp" />
+		<Unit filename="source/vec2d.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
