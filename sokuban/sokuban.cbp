@@ -8,6 +8,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/sokuban" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,12 +33,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="externals/sdl2/include" />
+			<Add directory="externals/sdl2_image/include" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image" />
 			<Add directory="externals/sdl2/lib" />
+			<Add directory="externals/sdl2_image/lib" />
 		</Linker>
 		<Unit filename="source/main.cpp" />
+		<Unit filename="source/resman.cpp" />
+		<Unit filename="source/resman.hpp" />
 		<Unit filename="source/vec2d.cpp" />
 		<Unit filename="source/vec2d.hpp" />
 		<Extensions>
