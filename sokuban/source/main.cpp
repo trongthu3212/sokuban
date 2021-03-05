@@ -1,9 +1,8 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <fstream>
 
 #include "resman.hpp"
-
-using namespace std;
 
 int main(int argc, char ** argv)
 {
@@ -31,9 +30,32 @@ int main(int argc, char ** argv)
                 break;
         }
 
-        //SDL_Rect dstrect = { 5, 5, 320, 240 };
-        //SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        std::string s;
+        std::ifstream file_map("map.txt");
+
+        int line=-1;
+
+        while (file_map.good()){
+            getline(file_map,s);
+            line++;
+            int len;
+            len = s.length();
+            for(int i=0;i<len;i++){
+                SDL_Rect dstrect = { i * 32,line * 32, 32, 32 };
+                switch(s[i]){
+                case '#':
+                    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+                    break;
+                /*case '0':
+                    SDL_RenderCopy(renderer, textu, NULL, &dstrect);
+                    break;*/
+                default:
+                    //cout<<" ";
+                    break;
+                }
+            }
+        }
+
         SDL_RenderPresent(renderer);
     }
 

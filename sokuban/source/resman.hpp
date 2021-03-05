@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include <map>
-#include <cstring>
+#include <string>
 
 struct TextureInfo {
     uint32_t useCount;

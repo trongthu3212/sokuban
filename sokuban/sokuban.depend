@@ -757,9 +757,10 @@
 
 1613992738 e:\dev\projects\sokuban\sokuban\source\vec2d.hpp
 
-1614002956 source:e:\dev\projects\sokuban\sokuban\source\main.cpp
+1614956810 source:e:\dev\projects\sokuban\sokuban\source\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
+	<fstream>
 	"resman.hpp"
 
 1613992738 e:\dev\projects\sokuban\sokuban\externals\sdl2\include\sdl2\sdl.h
@@ -1134,8 +1135,20 @@
 1614002902 source:e:\dev\projects\sokuban\sokuban\source\resman.cpp
 	"resman.hpp"
 
-1614002825 e:\dev\projects\sokuban\sokuban\source\resman.hpp
+1614004346 e:\dev\projects\sokuban\sokuban\source\resman.hpp
 	<SDL2/SDL.h>
 	<map>
-	<cstring>
+	<string>
+
+1614956228 source:e:\dev\projects\sokuban\sokuban\source\rectangle.cpp
+	"rectangle.hpp"
+
+1614956388 e:\dev\projects\sokuban\sokuban\source\rectangle.hpp
+	"vec2d.hpp"
+
+1614956545 source:e:\dev\projects\sokuban\sokuban\source\object.cpp
+	"object.hpp"
+
+1614956529 e:\dev\projects\sokuban\sokuban\source\object.hpp
+	"vec2d.hpp"
 
