@@ -40,6 +40,8 @@
 			<Add directory="externals/sdl2/lib" />
 			<Add directory="externals/sdl2_image/lib" />
 		</Linker>
+		<Unit filename="source/gamestate.cpp" />
+		<Unit filename="source/gamestate.hpp" />
 		<Unit filename="source/main.cpp" />
 		<Unit filename="source/object.cpp" />
 		<Unit filename="source/object.hpp" />

@@ -17,7 +17,9 @@ private:
     SDL_Renderer *renderer;
 
 public:
+    TextureManager() {}
     TextureManager(SDL_Renderer *renderer_) : renderer(renderer_) {}
+
     ~TextureManager();
 
     SDL_Texture *Load(std::string path);

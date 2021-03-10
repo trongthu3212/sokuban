@@ -757,7 +757,7 @@
 
 1613992738 e:\dev\projects\sokuban\sokuban\source\vec2d.hpp
 
-1614956810 source:e:\dev\projects\sokuban\sokuban\source\main.cpp
+1614957998 source:e:\dev\projects\sokuban\sokuban\source\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
 	<fstream>
@@ -1132,23 +1132,33 @@
 	"begin_code.h"
 	"close_code.h"
 
-1614002902 source:e:\dev\projects\sokuban\sokuban\source\resman.cpp
+1614957998 source:e:\dev\projects\sokuban\sokuban\source\resman.cpp
 	"resman.hpp"
 
-1614004346 e:\dev\projects\sokuban\sokuban\source\resman.hpp
+1615387149 e:\dev\projects\sokuban\sokuban\source\resman.hpp
 	<SDL2/SDL.h>
 	<map>
 	<string>
 
-1614956228 source:e:\dev\projects\sokuban\sokuban\source\rectangle.cpp
+1614957868 source:e:\dev\projects\sokuban\sokuban\source\rectangle.cpp
 	"rectangle.hpp"
 
-1614956388 e:\dev\projects\sokuban\sokuban\source\rectangle.hpp
+1614957868 e:\dev\projects\sokuban\sokuban\source\rectangle.hpp
 	"vec2d.hpp"
 
-1614956545 source:e:\dev\projects\sokuban\sokuban\source\object.cpp
+1615387114 source:e:\dev\projects\sokuban\sokuban\source\object.cpp
 	"object.hpp"
+	"gamestate.hpp"
 
-1614956529 e:\dev\projects\sokuban\sokuban\source\object.hpp
+1615387125 e:\dev\projects\sokuban\sokuban\source\object.hpp
+	<sdl2/sdl.h>
 	"vec2d.hpp"
+
+1615386947 e:\dev\projects\sokuban\sokuban\source\gamestate.hpp
+	<sdl2/sdl.h>
+	"resman.hpp"
+
+1615387166 source:e:\dev\projects\sokuban\sokuban\source\gamestate.cpp
+	"gamestate.hpp"
+	<fstream>
 
