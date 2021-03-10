@@ -46,6 +46,7 @@ public:
 
 struct wall: public object{
 public:
+     //wall(GameState *state);
     //override OnKeyPress va viet thuat toan di chuyen cho wall
     void OnKeyPress(int key_code) override{
     }
