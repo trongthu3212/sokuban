@@ -1,7 +1,8 @@
-#include "gamestate.hpp"
 #include "object.hpp"
 #include <fstream>
 #include <string>
+struct Gamestate;
+
 struct GameMap{
     object* objs[200][200];
     GameState * state;
@@ -23,16 +24,16 @@ struct GameMap{
         for(int i=0;i<len;i++){
             switch(s[i]){
                 case '#':
-                   objs[i][line]=new wall;
+                   objs[i][line]=new wall(state);
                     break;
                 case '0':
                     // Them object Box vao mang
-                    objs[i][line]=new box;
+                    objs[i][line]=new box(state);
 
                     break;
                 case 'x':
                     // Them nguoi choi vao mang
-                    objs[i][line]=new player;
+                    objs[i][line]=new player(state);
                     break;
                 default:
                     break;
