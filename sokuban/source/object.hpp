@@ -12,7 +12,9 @@ struct GameState;
 
 struct object{
 public:
-    //object(GameState *state);
+    object(GameState *state_){
+        state=state_;
+    }
 
     vec2d get_pos();
 
@@ -29,7 +31,10 @@ protected:
 
 struct player: public object {
 public:
-    //player(GameState *state);
+    player(GameState *state_) :object(state){
+
+    }
+
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override;
@@ -37,7 +42,9 @@ public:
 
 struct box: public object{
 public:
-    //box(GameState *state);
+    box(GameState *state_) :object(state){
+
+    }
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
@@ -46,7 +53,9 @@ public:
 
 struct wall: public object{
 public:
-     //wall(GameState *state);
+    wall(GameState *state_) :object(state){
+
+    }
     //override OnKeyPress va viet thuat toan di chuyen cho wall
     void OnKeyPress(int key_code) override{
     }
