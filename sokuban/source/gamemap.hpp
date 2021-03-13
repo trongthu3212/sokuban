@@ -1,12 +1,25 @@
-#include "gamestate.hpp"
 #include "object.hpp"
 #include <fstream>
 #include <string>
+#include <algorithm>
+struct GameState;
 struct GameMap{
     object* objs[200][200];
     GameState * state;
     GameMap(GameState* state_) {
         state = state_ ;
+    }
+    int height;
+    int width;
+    void draw() {
+        for(int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
+                if(objs[i][j]!=NULL){
+                    objs[i][j]->Draw();
+                }
+            }
+        }
+
     }
     void load(std::string path){
     std::ifstream file_map;
@@ -23,22 +36,27 @@ struct GameMap{
         for(int i=0;i<len;i++){
             switch(s[i]){
                 case '#':
-                   objs[i][line]=new wall;
+                   objs[i][line]=new wall(state);
                     break;
                 case '0':
                     // Them object Box vao mang
-                    objs[i][line]=new box;
+                    objs[i][line]=new box(state);
 
                     break;
                 case 'x':
                     // Them nguoi choi vao mang
-                    objs[i][line]=new player;
+                    objs[i][line]=new player(state);
                     break;
                 default:
                     break;
 
             }
+            if(objs[i][line]!=NULL){
+                objs[i][line]->set_pos(i,line);
+            }
         }
+            width = std::max(len,line);
     }
+            height=line;
     }
 };

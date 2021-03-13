@@ -5,7 +5,14 @@ vec2d object::get_pos()
     {
         return pos;
     }
+ object::object(GameState *state_){
+        state=state_;
+        texture = state->get_texture_manager()->Load("castle.bmp");
+    }
 
+object::~object() {
+        state->get_texture_manager()->Unload(texture);
+    }
 void player::OnKeyPress(int key_code) {
         if (key_code == KEY_DOWN) {
             pos.y=pos.y+1;
@@ -25,8 +32,8 @@ void player::OnKeyPress(int key_code) {
 void object::Draw() {
     SDL_Rect dest_rect;
 
-    dest_rect.x = pos.x;
-    dest_rect.y = pos.y;
+    dest_rect.x = pos.x*32;
+    dest_rect.y = pos.y*32;
     dest_rect.w = 32;
     dest_rect.h = 32;
 

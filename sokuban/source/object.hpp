@@ -12,12 +12,16 @@ struct GameState;
 
 struct object{
 public:
-    object(GameState *state_){
-        state=state_;
-    }
+    object(GameState *state_);
 
+
+
+    ~object() ;
     vec2d get_pos();
-
+    void set_pos(int x, int y){
+       pos.x=x;//same vec2d(x,y);
+        pos.y=y;
+     }
     virtual void OnKeyPress(int key_code) {
     }
 
