@@ -35,7 +35,7 @@ protected:
 
 struct player: public object {
 public:
-    player(GameState *state_) :object(state){
+    player(GameState *state_) :object(state_){
 
     }
 
@@ -46,7 +46,7 @@ public:
 
 struct box: public object{
 public:
-    box(GameState *state_) :object(state){
+    box(GameState *state_) :object(state_){
 
     }
 
@@ -57,7 +57,7 @@ public:
 
 struct wall: public object{
 public:
-    wall(GameState *state_) :object(state){
+    wall(GameState *state_) :object(state_){
 
     }
     //override OnKeyPress va viet thuat toan di chuyen cho wall
