@@ -38,49 +38,38 @@ void GameState::loop() {
   /* that occurs.
                                                */
   while(true){
-  while( SDL_PollEvent( &event ) ){
-    /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
-    switch( event.type ){
-      case SDL_KEYDOWN:
-       switch(event.key.keysym.sym)
-       {
+      while( SDL_PollEvent( &event ) ){
+        /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
+        switch( event.type ){
+          case SDL_KEYDOWN:
+           {
+               for (int i = 0; i < x->width; i++)
+               {
+                   for(int j=0;j< x->height;j++)
+                   {
+                       if (x->objs[i][j]!=NULL)
+                       {
+                           x->objs[i][j]->OnKeyPress(event.key.keysym.sym);
+                       }
+                   }
+               }
+               break;
+           }
 
-       case SDLK_LEFT:
-        {
-            std::cout <<"left";
+          case SDL_KEYUP:
+            //sprintf( "Up\n" );
             break;
-        }
-        case SDLK_RIGHT:
-        {
-            std::cout <<"right";
+
+
+          default:
             break;
+
+
         }
-         case SDLK_UP:
-        {
-            std::cout <<"up";
-            break;
-        }
-         case SDLK_DOWN:
-        {
-            std::cout <<"down";
-            break;
-        }
+      }
 
-       }
-
-      case SDL_KEYUP:
-        //sprintf( "Up\n" );
-        break;
-
-
-      default:
-        break;
-
-
-    }
-
-
-  }
+      x->draw();
+      SDL_RenderPresent(renderer);
   }
 
 }
