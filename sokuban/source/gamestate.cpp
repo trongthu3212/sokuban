@@ -11,6 +11,7 @@ GameState::GameState() {
     manager = TextureManager(renderer);
 
     x = new GameMap(this);
+    x->load("map.txt");
 }
 
 GameState::~GameState() {
@@ -38,6 +39,8 @@ void GameState::loop() {
   /* that occurs.
                                                */
   while(true){
+      SDL_RenderClear(renderer);
+
       while( SDL_PollEvent( &event ) ){
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
         switch( event.type ){
