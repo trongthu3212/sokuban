@@ -9,6 +9,8 @@ GameState::GameState() {
     window = SDL_CreateWindow("Sokuban", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
     renderer = SDL_CreateRenderer(window, -1, 0);
     manager = TextureManager(renderer);
+
+    x = new GameMap(this);
 }
 
 GameState::~GameState() {
@@ -16,6 +18,8 @@ GameState::~GameState() {
     SDL_DestroyWindow(window);
 
     SDL_Quit();
+
+    delete x;
 }
 
 SDL_Renderer *GameState::get_renderer() {

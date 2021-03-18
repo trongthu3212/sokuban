@@ -1,3 +1,4 @@
+#pragma once
 #include "object.hpp"
 #include <fstream>
 #include <string>
