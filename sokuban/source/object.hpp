@@ -21,7 +21,13 @@ public:
     }
 
     virtual void Draw();
+
+    void SetMoved(const bool moved_) {
+        moved = moved_;
+    }
 protected:
+    bool moved;
+
     GameMap *state;
     SDL_Texture *texture;
 

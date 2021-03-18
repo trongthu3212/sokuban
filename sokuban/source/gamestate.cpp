@@ -42,6 +42,15 @@ void GameState::loop() {
       SDL_RenderClear(renderer);
 
       while( SDL_PollEvent( &event ) ){
+       for (int i = 0; i < x->width; i++)
+       {
+           for(int j=0;j< x->height;j++)
+           {
+               if (x->objs[i][j]!=NULL)
+                    x->objs[i][j]->SetMoved(false);
+           }
+        }
+
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
         switch( event.type ){
           case SDL_KEYDOWN:

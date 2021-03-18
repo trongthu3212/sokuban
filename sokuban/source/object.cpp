@@ -17,12 +17,18 @@ object::~object() {
         state->state->get_texture_manager()->Unload(texture);
     }
 void player::OnKeyPress(int key_code) {
+        if (!moved) {
+            moved = true;
+        } else {
+            return;
+        }
 
+        vec2d start = pos;
         switch(key_code){
             case SDLK_UP:
             {
                 if (state->objs[pos.x][pos.y - 1] != NULL) {
-                    break;
+                    return;
                 }
 
                  pos.y=pos.y-1;
@@ -31,7 +37,7 @@ void player::OnKeyPress(int key_code) {
              case SDLK_DOWN:
             {
                  if (state->objs[pos.x][pos.y + 1] != NULL) {
-                    break;
+                    return;
                 }
                   pos.y=pos.y+1;
                  break;
@@ -39,7 +45,7 @@ void player::OnKeyPress(int key_code) {
              case SDLK_LEFT:
             {
                  if (state->objs[pos.x-1][pos.y] != NULL) {
-                    break;
+                    return;
                 }
                  pos.x=pos.x-1;
                  break;
@@ -47,7 +53,7 @@ void player::OnKeyPress(int key_code) {
              case SDLK_RIGHT:
             {
                  if (state->objs[pos.x+1][pos.y] != NULL) {
-                    break;
+                    return;
                 }
                 pos.x=pos.x+1;
                  break;
@@ -56,6 +62,10 @@ void player::OnKeyPress(int key_code) {
                  break;
 
         }
+
+        object *oldobj = state->objs[start.x][start.y];
+        state->objs[start.x][start.y]= NULL;
+        state->objs[pos.x][pos.y]= oldobj;
     }
 
 void object::Draw() {
