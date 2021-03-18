@@ -3,11 +3,6 @@
 #include <sdl2/sdl.h>
 #include "vec2d.hpp"
 
-const int KEY_DOWN = 1;
-const int KEY_UP = 2;
-const int KEY_LEFT = 3;
-const int KEY_RIGHT = 4;
-
 struct GameState;
 
 struct object{
