@@ -1,6 +1,7 @@
 #include "gamestate.hpp"
 #include <fstream>
 #include "gamemap.hpp"
+#include<iostream>
 
 GameState::GameState() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -37,16 +38,34 @@ void GameState::loop() {
     /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
     switch( event.type ){
       case SDL_KEYDOWN:
-       if(event.key.keysym.sym==SDLK_LEFT){
-std::cout <<"down";
-    }
-        else{
-            std::cout <<"up";
+       switch(event.key.keysym.sym)
+       {
+
+       case SDLK_LEFT:
+        {
+            std::cout <<"left";
+            break;
         }
-        break;
+        case SDLK_RIGHT:
+        {
+            std::cout <<"right";
+            break;
+        }
+         case SDLK_UP:
+        {
+            std::cout <<"up";
+            break;
+        }
+         case SDLK_DOWN:
+        {
+            std::cout <<"down";
+            break;
+        }
+
+       }
 
       case SDL_KEYUP:
-        printf( "Up\n" );
+        //sprintf( "Up\n" );
         break;
 
 
