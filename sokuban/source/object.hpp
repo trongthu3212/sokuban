@@ -3,11 +3,11 @@
 #include <sdl2/sdl.h>
 #include "vec2d.hpp"
 
-struct GameState;
+struct GameMap;
 
 struct object{
 public:
-    object(GameState *state_);
+    object(GameMap *state_);
 
 
 
@@ -22,7 +22,7 @@ public:
 
     virtual void Draw();
 protected:
-    GameState *state;
+    GameMap *state;
     SDL_Texture *texture;
 
     vec2d pos;
@@ -30,7 +30,7 @@ protected:
 
 struct player: public object {
 public:
-    player(GameState *state_) :object(state_){
+    player(GameMap *state_) :object(state_){
 
     }
 
@@ -41,7 +41,7 @@ public:
 
 struct box: public object{
 public:
-    box(GameState *state_) :object(state_){
+    box(GameMap *state_) :object(state_){
 
     }
 
@@ -52,7 +52,7 @@ public:
 
 struct wall: public object{
 public:
-    wall(GameState *state_) :object(state_){
+    wall(GameMap *state_) :object(state_){
 
     }
     //override OnKeyPress va viet thuat toan di chuyen cho wall

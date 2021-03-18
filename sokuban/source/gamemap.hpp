@@ -2,14 +2,18 @@
 #include "object.hpp"
 #include <fstream>
 #include <string>
+#include <cstring>
 #include <algorithm>
 struct GameState;
 struct GameMap{
     object* objs[200][200];
+
     GameState * state;
     GameMap(GameState* state_) {
         state = state_ ;
+        memset(objs, 0, sizeof(objs));
     }
+
     int height;
     int width;
     void draw() {
@@ -37,16 +41,16 @@ struct GameMap{
         for(int i=0;i<len;i++){
             switch(s[i]){
                 case '#':
-                   objs[i][line]=new wall(state);
+                   objs[i][line]=new wall(this);
                     break;
                 case '0':
                     // Them object Box vao mang
-                    objs[i][line]=new box(state);
+                    objs[i][line]=new box(this);
 
                     break;
                 case 'x':
                     // Them nguoi choi vao mang
-                    objs[i][line]=new player(state);
+                    objs[i][line]=new player(this);
                     break;
                 default:
                     break;
