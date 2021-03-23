@@ -15,6 +15,7 @@ vec2d object::get_pos()
 object::~object() {
         state->state->get_texture_manager()->Unload(texture);
     }
+
 void player::OnKeyPress(int key_code) {
         if (!moved) {
             moved = true;
@@ -27,7 +28,10 @@ void player::OnKeyPress(int key_code) {
             case SDLK_UP:
             {
                 if (!state->objs[pos.x][pos.y - 1].empty()) {
-                    return;
+                    for(int k=0;k<state->objs[pos.x][pos.y - 1].size();k++){
+                        state->objs[pos.x][pos.y -1][k]->Advance(vec2d(0, -1));
+
+                    }
                 }
 
                  pos.y=pos.y-1;
@@ -36,7 +40,10 @@ void player::OnKeyPress(int key_code) {
              case SDLK_DOWN:
             {
                  if (!state->objs[pos.x][pos.y + 1].empty()) {
-                    return;
+                   for(int k=0;k<state->objs[pos.x][pos.y + 1].size();k++){
+                        state->objs[pos.x][pos.y +1][k]->Advance(vec2d(0, 1));
+
+                    }
                 }
                   pos.y=pos.y+1;
                  break;
@@ -44,7 +51,11 @@ void player::OnKeyPress(int key_code) {
              case SDLK_LEFT:
             {
                  if (!state->objs[pos.x-1][pos.y].empty()) {
-                    return;
+                   for(int k=0;k<state->objs[pos.x-1][pos.y].size();k++){
+                        state->objs[pos.x-1][pos.y][k]->Advance(vec2d(-1, 0));
+
+                    }
+
                 }
                  pos.x=pos.x-1;
                  break;
@@ -52,7 +63,11 @@ void player::OnKeyPress(int key_code) {
              case SDLK_RIGHT:
             {
                  if (!state->objs[pos.x+1][pos.y].empty()) {
-                    return;
+                 for(int k=0;k<state->objs[pos.x+1][pos.y ].size();k++){
+                        state->objs[pos.x+1][pos.y][k]->Advance(vec2d(1, 0));
+
+                    }
+;
                 }
                 pos.x=pos.x+1;
                  break;

@@ -26,8 +26,12 @@ public:
     void SetMoved(const bool moved_) {
         moved = moved_;
     }
+
+    virtual void Advance(const vec2d &amount) {
+    }
 protected:
     bool moved;
+    int factor;
 
     GameMap *state;
     SDL_Texture *texture;
@@ -51,6 +55,10 @@ public:
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
+    }
+
+    void Advance(const vec2d &amount) override {
+        pos=pos+amount;
     }
 };
 
