@@ -26,7 +26,7 @@ void player::OnKeyPress(int key_code) {
         switch(key_code){
             case SDLK_UP:
             {
-                if (state->objs[pos.x][pos.y - 1] != NULL) {
+                if (!state->objs[pos.x][pos.y - 1].empty()) {
                     return;
                 }
 
@@ -35,7 +35,7 @@ void player::OnKeyPress(int key_code) {
             }
              case SDLK_DOWN:
             {
-                 if (state->objs[pos.x][pos.y + 1] != NULL) {
+                 if (!state->objs[pos.x][pos.y + 1].empty()) {
                     return;
                 }
                   pos.y=pos.y+1;
@@ -43,7 +43,7 @@ void player::OnKeyPress(int key_code) {
             }
              case SDLK_LEFT:
             {
-                 if (state->objs[pos.x-1][pos.y] != NULL) {
+                 if (!state->objs[pos.x-1][pos.y].empty()) {
                     return;
                 }
                  pos.x=pos.x-1;
@@ -51,7 +51,7 @@ void player::OnKeyPress(int key_code) {
             }
              case SDLK_RIGHT:
             {
-                 if (state->objs[pos.x+1][pos.y] != NULL) {
+                 if (!state->objs[pos.x+1][pos.y].empty()) {
                     return;
                 }
                 pos.x=pos.x+1;
@@ -62,9 +62,12 @@ void player::OnKeyPress(int key_code) {
 
         }
 
-        object *oldobj = state->objs[start.x][start.y];
-        state->objs[start.x][start.y]= NULL;
-        state->objs[pos.x][pos.y]= oldobj;
+        std::vector<object*> &obj_at_old = state->objs[start.x][start.y];
+        std::vector<object*>::iterator ite = std::find(obj_at_old.begin(), obj_at_old.end(), this);
+        if (ite != obj_at_old.end()){
+            obj_at_old.erase(ite);
+            state->objs[pos.x][pos.y].push_back(this);
+        }
     }
 
 void object::Draw() {
