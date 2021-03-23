@@ -1,6 +1,5 @@
 sokuban.depend
 sokuban.layout
-bin
-bin/Debug
+bin/Debug/sokuban.exe
 obj
 obj/Debug
