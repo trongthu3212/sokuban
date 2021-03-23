@@ -56,6 +56,8 @@ struct GameMap{
                     // Them nguoi choi vao mang
                     objs[i][line].push_back(new player(this));
                     break;
+                case 'y':
+                    objs[i][line].push_back(new destination(this));
                 default:
                     break;
 
