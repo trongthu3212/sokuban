@@ -10,7 +10,6 @@ vec2d object::get_pos()
     }
  object::object(GameMap *state_){
         state=state_;
-        texture = state->state->get_texture_manager()->Load("castle.bmp");
     }
 
 object::~object() {
@@ -78,3 +77,19 @@ void object::Draw() {
 
     SDL_RenderCopy(state->state->get_renderer(), texture, NULL, &dest_rect);
 }
+
+ player::player(GameMap *state_) :object(state_){
+        texture = state->state->get_texture_manager()->Load("player.bmp");
+    }
+
+ box::box(GameMap *state_) :object(state_){
+        texture = state->state->get_texture_manager()->Load("box.bmp");
+ }
+
+ destination::destination(GameMap *state_) :object(state_){
+        texture = state->state->get_texture_manager()->Load("destination.bmp");
+ }
+
+ wall::wall(GameMap *state_) :object(state_){
+        texture = state->state->get_texture_manager()->Load("wall.bmp");
+ }

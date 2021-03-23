@@ -5,13 +5,14 @@
 
 struct GameMap;
 
-struct object{
+struct object
+{
 public:
     object(GameMap *state_);
 
 
 
-    ~object() ;
+    virtual ~object() ;
     vec2d get_pos();
     void set_pos(int x, int y){
        pos.x=x;//same vec2d(x,y);
@@ -34,34 +35,34 @@ protected:
     vec2d pos;
 };
 
-struct player: public object {
+struct player: public object
+ {
 public:
-    player(GameMap *state_) :object(state_){
-
-    }
-
+    player(GameMap *state_);
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override;
 };
 
-struct box: public object{
+struct box: public object
+{
 public:
-    box(GameMap *state_) :object(state_){
-
-    }
+    box(GameMap *state_);
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
     }
 };
 
-struct wall: public object{
+struct wall: public object
+{
 public:
-    wall(GameMap *state_) :object(state_){
-
-    }
+    wall(GameMap *state_);
     //override OnKeyPress va viet thuat toan di chuyen cho wall
     void OnKeyPress(int key_code) override{
     }
+};
+struct destination: public object
+{
+    destination(GameMap *state_);
 };

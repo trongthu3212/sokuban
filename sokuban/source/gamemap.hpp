@@ -52,6 +52,8 @@ struct GameMap{
                     // Them nguoi choi vao mang
                     objs[i][line]=new player(this);
                     break;
+                case 'y':
+                    objs[i][line]=new destination(this);
                 default:
                     break;
 
