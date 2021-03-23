@@ -46,8 +46,13 @@ void GameState::loop() {
        {
            for(int j=0;j< x->height;j++)
            {
-               if (x->objs[i][j]!=NULL)
-                    x->objs[i][j]->SetMoved(false);
+               if (!x->objs[i][j].empty())
+               {
+                   for(int k=0;k<x->objs[i][j].size();k++){
+                            x->objs[i][j][k]->SetMoved(false);
+
+                   }
+               }
            }
         }
 
@@ -59,9 +64,12 @@ void GameState::loop() {
                {
                    for(int j=0;j< x->height;j++)
                    {
-                       if (x->objs[i][j]!=NULL)
+                       if (!x->objs[i][j].empty())
                        {
-                           x->objs[i][j]->OnKeyPress(event.key.keysym.sym);
+                           for(int k=0;k<x->objs[i][j].size();k++){
+                                x->objs[i][j][k]->OnKeyPress(event.key.keysym.sym);
+
+                           }
                        }
                    }
                }

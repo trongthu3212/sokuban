@@ -4,9 +4,10 @@
 #include <string>
 #include <cstring>
 #include <algorithm>
+#include <vector>
 struct GameState;
 struct GameMap{
-    object* objs[200][200];
+    std::vector<object*> objs[200][200];
 
     GameState * state;
     GameMap(GameState* state_) {
@@ -19,8 +20,11 @@ struct GameMap{
     void draw() {
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
-                if(objs[i][j]!=NULL){
-                    objs[i][j]->Draw();
+                if(!objs[i][j].empty()){
+                    for(int k=0;k<objs[i][j].size();k++){
+                        objs[i][j][k]->Draw();
+
+                    }
                 }
             }
         }
@@ -41,25 +45,26 @@ struct GameMap{
         for(int i=0;i<len;i++){
             switch(s[i]){
                 case '#':
-                   objs[i][line]=new wall(this);
+                   objs[i][line].push_back(new wall(this));
                     break;
                 case '0':
                     // Them object Box vao mang
-                    objs[i][line]=new box(this);
+                    objs[i][line].push_back(new box(this));
 
                     break;
                 case 'x':
                     // Them nguoi choi vao mang
-                    objs[i][line]=new player(this);
+                    objs[i][line].push_back(new player(this));
                     break;
-                case 'y':
-                    objs[i][line]=new destination(this);
                 default:
                     break;
 
             }
-            if(objs[i][line]!=NULL){
-                objs[i][line]->set_pos(i,line);
+            if(!objs[i][line].empty()){
+                for(int k=0;k<objs[i][line].size();k++){
+                    objs[i][line][k]->set_pos(i,line);
+
+                }
             }
         }
             width = std::max(len,line);
