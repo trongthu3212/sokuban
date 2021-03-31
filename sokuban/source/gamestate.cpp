@@ -34,45 +34,15 @@ TextureManager *GameState::get_texture_manager() {
 void GameState::loop() {
     SDL_Event event;
 
-  /* Poll for events. SDL_PollEvent() returns 0 when there are no  */
-  /* more events on the event queue, our while loop will exit when */
-  /* that occurs.
-                                               */
   while(true){
       SDL_RenderClear(renderer);
 
       while( SDL_PollEvent( &event ) ){
-       for (int i = 0; i < x->width; i++)
-       {
-           for(int j=0;j< x->height;j++)
-           {
-               if (!x->objs[i][j].empty())
-               {
-                   for(int k=0;k<x->objs[i][j].size();k++){
-                            x->objs[i][j][k]->SetMoved(false);
-
-                   }
-               }
-           }
-        }
-
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
         switch( event.type ){
           case SDL_KEYDOWN:
            {
-               for (int i = 0; i < x->width; i++)
-               {
-                   for(int j=0;j< x->height;j++)
-                   {
-                       if (!x->objs[i][j].empty())
-                       {
-                           for(int k=0;k<x->objs[i][j].size();k++){
-                                x->objs[i][j][k]->OnKeyPress(event.key.keysym.sym);
-
-                           }
-                       }
-                   }
-               }
+                x->control->OnKeyPress(event.key.keysym.sym);
                break;
            }
 
