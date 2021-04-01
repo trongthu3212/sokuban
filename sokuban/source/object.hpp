@@ -55,6 +55,8 @@ public:
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
     }
+
+    bool Move(vec2d amount) override;
 };
 
 struct wall: public object

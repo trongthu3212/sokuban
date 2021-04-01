@@ -12,6 +12,7 @@ struct GameMap{
     object* foreground[200][200];
 
     player *control;
+
    SDL_Texture* ground;
 
     GameState * state;
@@ -20,7 +21,9 @@ struct GameMap{
     int height;
     int width;
 
+    int point=0;
+    int pointChecked = 0;
+
     void draw();
     void load(std::string path);
-
 };
