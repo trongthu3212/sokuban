@@ -35,6 +35,9 @@ void GameState::loop() {
     SDL_Event event;
 
   while(true){
+        if(x->point==x->pointChecked){
+            break;
+        }
       SDL_RenderClear(renderer);
 
       while( SDL_PollEvent( &event ) ){

@@ -11,8 +11,9 @@ struct GameMap{
     object* foreground[200][200];
 
     player *control;
-
     GameState * state;
+    int point=0;
+    int pointChecked = 0;
     GameMap(GameState* state_) {
         state = state_ ;
 
@@ -53,6 +54,7 @@ struct GameMap{
             for(int i=0;i<len;i++){
                 switch(s[i]){
                     case '#':
+
                         foreground[i][line] = new wall(this);
                         foreground[i][line]->set_pos(i, line);
                         break;
@@ -69,6 +71,7 @@ struct GameMap{
                         control = (player*)foreground[i][line];
                         break;
                     case 'y':
+                        point++;
                         background[i][line] = new destination(this);
                         background[i][line]->set_pos(i, line);
                     default:

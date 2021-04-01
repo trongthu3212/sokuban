@@ -60,6 +60,27 @@ bool object::Move(vec2d amount) {
 
     return false;
 }
+bool box::Move(vec2d amount){
+        if (gmap->foreground[pos.x + amount.x][pos.y + amount.y]) {
+            return false;
+        }
+
+        if(gmap->background[pos.x][pos.y]) {
+            gmap->pointChecked--;
+        }
+
+        vec2d oldPos = pos;
+        pos = pos + amount;
+
+         if(gmap->background[pos.x][pos.y]) {
+            gmap->pointChecked++;
+        }
+
+        std::swap(gmap->foreground[oldPos.x][oldPos.y], gmap->foreground[pos.x][pos.y]);
+
+        return true;
+
+}
 
 void object::Draw() {
     SDL_Rect dest_rect;
