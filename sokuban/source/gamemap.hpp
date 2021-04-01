@@ -78,6 +78,6 @@ struct GameMap{
             }
             width = std::max(len,line);
         }
-        height=line;
+        height=line+1;
     }
 };
