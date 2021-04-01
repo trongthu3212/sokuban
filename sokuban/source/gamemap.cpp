@@ -64,6 +64,8 @@ void GameMap::load(std::string path){
                         control = (player*)foreground[i][line];
                         break;
                     case 'y':
+                        point++;
+
                         background[i][line] = new destination(this);
                         background[i][line]->set_pos(i, line);
                     default:
