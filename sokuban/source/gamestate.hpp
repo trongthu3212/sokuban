@@ -1,13 +1,13 @@
 #pragma once
 #include <sdl2/sdl.h>
 #include "resman.hpp"
-#include"gamemap.hpp"
+#include "gamescene.hpp"
 
 struct GameState {
     SDL_Window *window;
     SDL_Renderer *renderer;
     TextureManager manager;
-    GameMap *x;
+    GameScene *gameScene;
 
 public:
     GameState();

@@ -42,6 +42,8 @@
 		</Linker>
 		<Unit filename="source/gamemap.cpp" />
 		<Unit filename="source/gamemap.hpp" />
+		<Unit filename="source/gamescene.cpp" />
+		<Unit filename="source/gamescene.hpp" />
 		<Unit filename="source/gamestate.cpp" />
 		<Unit filename="source/gamestate.hpp" />
 		<Unit filename="source/main.cpp" />
@@ -51,6 +53,7 @@
 		<Unit filename="source/rectangle.hpp" />
 		<Unit filename="source/resman.cpp" />
 		<Unit filename="source/resman.hpp" />
+		<Unit filename="source/scene.hpp" />
 		<Unit filename="source/vec2d.cpp" />
 		<Unit filename="source/vec2d.hpp" />
 		<Extensions>

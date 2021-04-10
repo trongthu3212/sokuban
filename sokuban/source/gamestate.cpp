@@ -10,8 +10,7 @@ GameState::GameState() {
     renderer = SDL_CreateRenderer(window, -1, 0);
     manager = TextureManager(renderer);
 
-    x = new GameMap(this);
-    x->load("map.txt");
+    gameScene = new GameScene(this);
 }
 
 GameState::~GameState() {
@@ -20,7 +19,7 @@ GameState::~GameState() {
 
     SDL_Quit();
 
-    delete x;
+    delete gameScene;
 }
 
 SDL_Renderer *GameState::get_renderer() {
@@ -35,33 +34,14 @@ void GameState::loop() {
     SDL_Event event;
 
   while(true){
-        if(x->point==x->pointChecked){
-            break;
-        }
       SDL_RenderClear(renderer);
 
       while( SDL_PollEvent( &event ) ){
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
-        switch( event.type ){
-          case SDL_KEYDOWN:
-           {
-                x->control->OnKeyPress(event.key.keysym.sym);
-               break;
-           }
-
-          case SDL_KEYUP:
-            //sprintf( "Up\n" );
-            break;
-
-
-          default:
-            break;
-
-
-        }
+        gameScene->Update(event);
       }
 
-      x->draw();
+      gameScene->Draw();
       SDL_RenderPresent(renderer);
   }
 
