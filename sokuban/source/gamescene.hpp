@@ -7,6 +7,7 @@ class GameMap;
 class GameScene: public Scene {
 private:
     GameMap *gmap;
+    int level=1;
 
 public:
     GameScene(GameState *state_);

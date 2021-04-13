@@ -24,6 +24,8 @@ struct GameMap{
     int point=0;
     int pointChecked = 0;
 
+
+    ~GameMap();
     void draw();
     void load(std::string path);
 };

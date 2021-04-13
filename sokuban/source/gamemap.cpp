@@ -8,7 +8,20 @@
 
         ground = state->get_texture_manager()->Load("ground.bmp");
 }
+GameMap::~GameMap(){
+        for(int i=0;i<width;i++){
+            for(int j=0;j<width;j++){
+                if(background[i][j]!=NULL){
+                    delete background[i][j];
+                }
+                if(foreground[i][j]!=NULL){
+                    delete foreground[i][j];
+                }
+            }
+        }
 
+        state->get_texture_manager()->Unload(ground);
+}
 void GameMap::draw()
     {
         for(int i=0;i<width;i++){

@@ -5,7 +5,7 @@
 struct GameState;
 
 class Scene {
-private:
+protected:
     GameState *state;
 
 public:
