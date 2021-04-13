@@ -7,6 +7,8 @@
         memset(foreground, 0, sizeof(foreground));
 
         ground = state->get_texture_manager()->Load("ground.bmp");
+
+
 }
 
 void GameMap::draw()
@@ -15,10 +17,10 @@ void GameMap::draw()
             for(int j=0;j<height;j++){
                 SDL_Rect dest_rect;
 
-                dest_rect.x = i*32;
-                dest_rect.y = j*32;
-                dest_rect.w = 32;
-                dest_rect.h = 32;
+                dest_rect.x = start_pos.x + i*64;
+                dest_rect.y = start_pos.y + j*64;
+                dest_rect.w = 64;
+                dest_rect.h = 64;
 
                 SDL_RenderCopy(state->get_renderer(), ground, NULL, &dest_rect);
                 if(background[i][j] != NULL){
@@ -76,4 +78,6 @@ void GameMap::load(std::string path){
             width = std::max(len,line);
         }
         height=line+1;
+        start_pos.x = (1200 - (64 * width))/2;
+        start_pos.y = (750- (64 * height))/2;
     }
