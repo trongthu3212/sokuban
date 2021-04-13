@@ -31,4 +31,5 @@ struct GameMap{
     void load(std::string path);
 
     vec2d start_pos;
+    int boxsize;
 };

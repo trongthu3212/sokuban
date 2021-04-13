@@ -1,5 +1,6 @@
 #include "gamemap.hpp"
 #include  "gamestate.hpp"
+#include <cmath>
  GameMap::GameMap(GameState* state_) {
         state = state_ ;
 
@@ -30,10 +31,10 @@ void GameMap::draw()
             for(int j=0;j<height;j++){
                 SDL_Rect dest_rect;
 
-                dest_rect.x = start_pos.x + i*64;
-                dest_rect.y = start_pos.y + j*64;
-                dest_rect.w = 64;
-                dest_rect.h = 64;
+                dest_rect.x = start_pos.x + i*boxsize;
+                dest_rect.y = start_pos.y + j*boxsize;
+                dest_rect.w = boxsize;
+                dest_rect.h = boxsize;
 
                 SDL_RenderCopy(state->get_renderer(), ground, NULL, &dest_rect);
                 if(background[i][j] != NULL){
@@ -91,6 +92,12 @@ void GameMap::load(std::string path){
             width = std::max(len,line);
         }
         height=line+1;
-        start_pos.x = (1200 - (64 * width))/2;
-        start_pos.y = (750- (64 * height))/2;
+
+        int average_boxsize = std::min(std::round(1200.0/width),std::round(750.0/height));
+        if(average_boxsize>=63) boxsize=64;
+       else if(average_boxsize>=31)boxsize=32;
+       else boxsize=16;
+
+        start_pos.x = (1200 - (boxsize * width))/2;
+        start_pos.y = (750- (boxsize * height))/2;
     }
