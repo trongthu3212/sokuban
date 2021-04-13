@@ -1,3 +1,5 @@
+#pragma once
+
 struct vec2d {
     int x,y;
 

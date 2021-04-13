@@ -85,10 +85,10 @@ bool box::Move(vec2d amount){
 void object::Draw() {
     SDL_Rect dest_rect;
 
-    dest_rect.x = pos.x*32;
-    dest_rect.y = pos.y*32;
-    dest_rect.w = 32;
-    dest_rect.h = 32;
+    dest_rect.x = gmap->start_pos.x + pos.x*64;
+    dest_rect.y = gmap->start_pos.y + pos.y*64;
+    dest_rect.w = 64;
+    dest_rect.h = 64;
 
     SDL_RenderCopy(gmap->state->get_renderer(), texture, NULL, &dest_rect);
 }

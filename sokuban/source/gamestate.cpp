@@ -6,7 +6,7 @@
 GameState::GameState() {
     SDL_Init(SDL_INIT_VIDEO);
 
-    window = SDL_CreateWindow("Sokuban", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+    window = SDL_CreateWindow("Sokuban", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1200, 750, 0);
     renderer = SDL_CreateRenderer(window, -1, 0);
     manager = TextureManager(renderer);
 

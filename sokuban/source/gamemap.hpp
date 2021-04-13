@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <vector>
 #include <SDL2/SDL.h>
+#include "vec2d.hpp"
 struct GameState;
 struct GameMap{
     object* background[200][200];
@@ -28,4 +29,6 @@ struct GameMap{
     ~GameMap();
     void draw();
     void load(std::string path);
+
+    vec2d start_pos;
 };
