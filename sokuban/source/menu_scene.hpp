@@ -9,6 +9,7 @@ class StartButton:public Button{
 private:
     MenuScene *scene;
 
+
 public:
     StartButton(GameState *state_,MenuScene*scene_)
         : Button(state_, "start.png") {
@@ -33,7 +34,7 @@ public:
 
 class MenuScene:public Scene{
 private :
-    SDL_Texture *backgroundImg ;
+    SDL_Texture *backgroundimg;
     LevelSelectButton selectBtn;
     StartButton startBtn;
 

@@ -11,7 +11,7 @@ GameState::GameState() {
     manager = TextureManager(renderer);
 
     gameScene = new GameScene(this);
-    menuScene= new MenuScene(this);
+   menuScene= new MenuScene(this);
 }
 
 GameState::~GameState() {

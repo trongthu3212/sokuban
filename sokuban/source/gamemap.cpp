@@ -1,5 +1,6 @@
 #include "gamemap.hpp"
 #include  "gamestate.hpp"
+#include "size.hpp"
 #include <cmath>
  GameMap::GameMap(GameState* state_) {
         state = state_ ;
@@ -93,11 +94,11 @@ void GameMap::load(std::string path){
         }
         height=line+1;
 
-        int average_boxsize = std::min(std::round(1200.0/width),std::round(750.0/height));
+        int average_boxsize = std::min(std::round((float)SCREENSIZE_X/width),std::round((float)SCREENSIZE_Y/height));
         if(average_boxsize>=63) boxsize=64;
        else if(average_boxsize>=31)boxsize=32;
        else boxsize=16;
 
-        start_pos.x = (1200 - (boxsize * width))/2;
-        start_pos.y = (750- (boxsize * height))/2;
+        start_pos.x = (SCREENSIZE_X - (boxsize * width))/2;
+        start_pos.y = (SCREENSIZE_Y- (boxsize * height))/2;
     }

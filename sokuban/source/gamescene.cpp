@@ -1,11 +1,13 @@
 #include "gamescene.hpp"
 #include "gamestate.hpp"
 #include "gamemap.hpp"
+#include "size.hpp"
 
 #include <sstream>
 
 void RestartButton::Execute() {
     scene->SwitchMap();
+
 }
 
 GameScene::GameScene(GameState *state_)
@@ -13,6 +15,7 @@ GameScene::GameScene(GameState *state_)
     , restartBtn(state_, this) {
     gmap = new GameMap(state_);
     gmap->load("map1.txt");
+
     restartBtn.SetSize({200, 100});
     restartBtn.SetPosition({ 0, 0 });
 }
@@ -65,6 +68,8 @@ void GameScene::Update(const SDL_Event &event) {
 }
 
 void GameScene::Draw() {
-    gmap->draw();
+
     restartBtn.Draw();
 }
+
+

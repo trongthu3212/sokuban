@@ -23,6 +23,7 @@ public:
 class GameScene: public Scene {
 private:
     GameMap *gmap;
+
     SDL_Texture *restartTexture;
     RestartButton restartBtn;
     int level=1;

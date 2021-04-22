@@ -1,6 +1,7 @@
 
 #include "gamestate.hpp"
 #include "menu_scene.hpp"
+#include "size.hpp"
 
 void StartButton::Execute() {
    // scene->SwitchMap();
@@ -15,10 +16,11 @@ MenuScene::MenuScene(GameState *state_)
     , startBtn(state_, this)
     ,selectBtn(state_,this){
         // thay bag startBtn voi selectBtn
-    startBtn.SetSize({200, 100});
-    startBtn.SetPosition({ 0, 0 });
-    selectBtn.SetSize({ 200, 100 });
-    selectBtn.SetPosition({ 300, 300 });
+    backgroundimg = state->get_texture_manager()->Load("background.bmp");
+    startBtn.SetSize({ 140, 70 });
+    startBtn.SetPosition({ (SCREENSIZE_X - 140)/2, (SCREENSIZE_Y-70)/2 });
+    selectBtn.SetSize({ 140, 70 });
+    selectBtn.SetPosition({ (SCREENSIZE_X - 140)/2, (SCREENSIZE_Y-70)/2 +100});
 
 }
 
@@ -50,7 +52,14 @@ void MenuScene::Update(const SDL_Event &event) {
 }
 
 void MenuScene::Draw() {
-    // ve 2
+     SDL_Rect dest_rect;
+
+    dest_rect.x = 0;
+    dest_rect.y = 0;
+    dest_rect.w = SCREENSIZE_X;
+    dest_rect.h = SCREENSIZE_Y;
+
+    SDL_RenderCopy(state->get_renderer(), backgroundimg, NULL, &dest_rect);
     startBtn.Draw();
     selectBtn.Draw();
 }
