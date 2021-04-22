@@ -11,6 +11,7 @@ GameState::GameState() {
     manager = TextureManager(renderer);
 
     gameScene = new GameScene(this);
+    menuScene= new MenuScene(this);
 }
 
 GameState::~GameState() {
@@ -20,6 +21,7 @@ GameState::~GameState() {
     SDL_Quit();
 
     delete gameScene;
+    delete menuScene;
 }
 
 SDL_Renderer *GameState::get_renderer() {
@@ -38,10 +40,13 @@ void GameState::loop() {
 
       while( SDL_PollEvent( &event ) ){
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
-        gameScene->Update(event);
+        //gameScene->Update(event);
+        menuScene->Update(event);
+
       }
 
-      gameScene->Draw();
+      //gameScene->Draw();
+      menuScene->Draw();
       SDL_RenderPresent(renderer);
   }
 
