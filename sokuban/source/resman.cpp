@@ -1,9 +1,9 @@
 #include "resman.hpp"
+#include <SDL2/SDL_image.h>
 
 TextureManager::~TextureManager() {
     for (std::map<std::string, TextureInfo>::iterator ite = texs.begin(); ite != texs.end(); ite++) {
         SDL_DestroyTexture(ite->second.tex);
-        SDL_FreeSurface(ite->second.surf);
     }
 }
 
@@ -12,8 +12,7 @@ SDL_Texture *TextureManager::Load(std::string path) {
     if (ite == texs.end()) {
         // Load it
         TextureInfo info;
-        info.surf = SDL_LoadBMP(path.c_str());
-        info.tex = SDL_CreateTextureFromSurface(renderer, info.surf);
+        info.tex = IMG_LoadTexture(renderer, path.c_str());
         info.useCount = 1;
 
         SDL_Texture *retResult = info.tex;
@@ -35,7 +34,6 @@ void TextureManager::Unload(SDL_Texture *tex) {
 
             if (ite->second.useCount == 0) {
                 SDL_DestroyTexture(ite->second.tex);
-                SDL_FreeSurface(ite->second.surf);
 
                 texs.erase(ite);
                 break;

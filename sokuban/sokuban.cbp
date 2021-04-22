@@ -34,12 +34,15 @@
 			<Add option="-fexceptions" />
 			<Add directory="externals/sdl2/include" />
 			<Add directory="externals/sdl2_image/include" />
+			<Add directory="externals/sdl2/include/sdl2" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image" />
 			<Add directory="externals/sdl2/lib" />
 			<Add directory="externals/sdl2_image/lib" />
 		</Linker>
+		<Unit filename="source/button.cpp" />
+		<Unit filename="source/button.hpp" />
 		<Unit filename="source/gamemap.cpp" />
 		<Unit filename="source/gamemap.hpp" />
 		<Unit filename="source/gamescene.cpp" />

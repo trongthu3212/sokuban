@@ -8,7 +8,6 @@
 struct TextureInfo {
     uint32_t useCount;
     SDL_Texture *tex;
-    SDL_Surface *surf;
 };
 
 class TextureManager {

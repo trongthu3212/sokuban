@@ -26,6 +26,9 @@ public:
     virtual void OnKeyPress(int key_code) {
     }
 
+    virtual void OnMousePress(int mouse_code){
+    }
+
     virtual void Draw();
 
     virtual bool Move(vec2d amount);
