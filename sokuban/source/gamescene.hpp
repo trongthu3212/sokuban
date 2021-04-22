@@ -16,7 +16,6 @@ public:
         scene = scene_;
     }
 
-    void Draw() override;
     void Execute() override;
 };
 

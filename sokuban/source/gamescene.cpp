@@ -4,17 +4,6 @@
 
 #include <sstream>
 
-void RestartButton::Draw() {
-    SDL_Rect dest_rect;
-
-    dest_rect.x = 0;
-    dest_rect.y = 0;//gmap->start_pos.y + pos.y*gmap->boxsize;
-    dest_rect.w = 300;
-    dest_rect.h = 150;
-
-    SDL_RenderCopy(state->get_renderer(), img, NULL, &dest_rect);
-}
-
 void RestartButton::Execute() {
     scene->SwitchMap();
 }
@@ -24,6 +13,8 @@ GameScene::GameScene(GameState *state_)
     , restartBtn(state_, this) {
     gmap = new GameMap(state_);
     gmap->load("map1.txt");
+    restartBtn.SetSize({200, 100});
+    restartBtn.SetPosition({ 0, 0 });
 }
 
 GameScene::~GameScene() {
@@ -58,10 +49,9 @@ void GameScene::Update(const SDL_Event &event) {
     case SDL_MOUSEBUTTONDOWN:{
         int x,y;
         SDL_GetMouseState(&x, &y);
-        if((x<300 && y <150) &&(x>0 && y>0)){
-            restartBtn.Execute();
-        }
 
+        restartBtn.OnMousePressed(event.button.button, x, y);
+        break;
     }
 
     case SDL_KEYUP:
