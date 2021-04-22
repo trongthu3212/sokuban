@@ -5,11 +5,16 @@
 #include "menu_scene.hpp"
 
 struct GameState {
+private:
+    friend class StartButton;
+
     SDL_Window *window;
     SDL_Renderer *renderer;
     TextureManager manager;
+
     GameScene *gameScene;
     MenuScene *menuScene;
+    Scene *currentScene ;
 
 public:
     GameState();

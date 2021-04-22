@@ -6,12 +6,14 @@
 GameState::GameState() {
     SDL_Init(SDL_INIT_VIDEO);
 
+
     window = SDL_CreateWindow("Sokuban", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1200, 750, 0);
     renderer = SDL_CreateRenderer(window, -1, 0);
     manager = TextureManager(renderer);
 
     gameScene = new GameScene(this);
-   menuScene= new MenuScene(this);
+    menuScene= new MenuScene(this);
+    currentScene =menuScene;
 }
 
 GameState::~GameState() {
@@ -41,12 +43,11 @@ void GameState::loop() {
       while( SDL_PollEvent( &event ) ){
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
         //gameScene->Update(event);
-        menuScene->Update(event);
-
+         currentScene->Update(event);
       }
 
       //gameScene->Draw();
-      menuScene->Draw();
+      currentScene->Draw();
       SDL_RenderPresent(renderer);
   }
 
