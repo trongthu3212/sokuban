@@ -68,7 +68,7 @@ void GameScene::Update(const SDL_Event &event) {
 }
 
 void GameScene::Draw() {
-
+    gmap->draw();
     restartBtn.Draw();
 }
 
