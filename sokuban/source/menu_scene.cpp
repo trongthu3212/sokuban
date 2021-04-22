@@ -3,6 +3,7 @@
 #include "menu_scene.hpp"
 
 void StartButton::Execute() {
+   // scene->SwitchMap();
 }
 
 void LevelSelectButton::Execute() {
