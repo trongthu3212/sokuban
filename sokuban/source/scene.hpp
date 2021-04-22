@@ -13,6 +13,10 @@ public:
         state = state_;
     }
 
+    GameState *GetState() {
+        return state;
+    }
+
     virtual void Update(const SDL_Event &evt) = 0;
     virtual void Draw() = 0;
 };

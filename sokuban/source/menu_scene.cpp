@@ -3,7 +3,8 @@
 #include "menu_scene.hpp"
 
 void StartButton::Execute() {
-   // scene->SwitchMap();
+   GameState *state = scene->GetState();
+   state->currentScene = state->gameScene;
 }
 
 void LevelSelectButton::Execute() {
@@ -36,6 +37,8 @@ void MenuScene::Update(const SDL_Event &event) {
 
         //restartBtn.OnMousePressed(event.button.button, x, y);
         // goi ham OnMousePressed cung tham so cua 2 bien bbtn
+        startBtn.OnMousePressed(event.button.button, x, y);
+        selectBtn.OnMousePressed(event.button.button, x, y);
         break;
     }
 
