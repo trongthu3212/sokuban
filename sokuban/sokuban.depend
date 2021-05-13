@@ -1212,22 +1212,24 @@
 	"gamemap.hpp"
 	<SDL2/sdl.h>
 
-1618283365 source:c:\users\admin\documents\game\sokuban\sokuban\source\gamemap.cpp
+1619062524 source:c:\users\admin\documents\game\sokuban\sokuban\source\gamemap.cpp
 	"gamemap.hpp"
 	"gamestate.hpp"
+	"size.hpp"
 	<cmath>
 
-1619058651 c:\users\admin\documents\game\sokuban\sokuban\source\gamescene.hpp
+1619062524 c:\users\admin\documents\game\sokuban\sokuban\source\gamescene.hpp
 	"button.hpp"
 	"scene.hpp"
 
 1619061807 c:\users\admin\documents\game\sokuban\sokuban\source\scene.hpp
 	<SDL2/SDL.h>
 
-1619058651 source:c:\users\admin\documents\game\sokuban\sokuban\source\gamescene.cpp
+1619062524 source:c:\users\admin\documents\game\sokuban\sokuban\source\gamescene.cpp
 	"gamescene.hpp"
 	"gamestate.hpp"
 	"gamemap.hpp"
+	"size.hpp"
 	<sstream>
 
 1614958449 c:\users\admin\documents\game\sokuban\sokuban\externals\sdl2_image\include\sdl2\sdl_image.h
@@ -1246,11 +1248,14 @@
 	"button.hpp"
 	"gamestate.hpp"
 
-1619060550 c:\users\admin\documents\game\sokuban\sokuban\source\menu_scene.hpp
+1619062524 c:\users\admin\documents\game\sokuban\sokuban\source\menu_scene.hpp
 	"gamestate.hpp"
 	"button.hpp"
 
-1619061890 source:c:\users\admin\documents\game\sokuban\sokuban\source\menu_scene.cpp
+1619062524 source:c:\users\admin\documents\game\sokuban\sokuban\source\menu_scene.cpp
 	"gamestate.hpp"
 	"menu_scene.hpp"
+	"size.hpp"
+
+1619062524 c:\users\admin\documents\game\sokuban\sokuban\source\size.hpp
 
