@@ -20,12 +20,28 @@ public:
 };
 
 
+class HomeButton: public Button {
+private:
+    GameScene *scene;
+
+
+public:
+    HomeButton(GameState *state_,GameScene*scene_)
+        : Button(state_, "home.png") {
+        scene = scene_;
+    }
+
+    void Execute() override;
+};
+
 class GameScene: public Scene {
 private:
     GameMap *gmap;
 
     SDL_Texture *restartTexture;
     RestartButton restartBtn;
+    HomeButton homeBtn;
+
     int level=1;
 
 public:

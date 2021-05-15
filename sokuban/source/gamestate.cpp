@@ -36,11 +36,16 @@ TextureManager *GameState::get_texture_manager() {
 
 void GameState::loop() {
     SDL_Event event;
+    bool should_quit = false;
 
-  while(true){
+  while(!should_quit){
       SDL_RenderClear(renderer);
 
       while( SDL_PollEvent( &event ) ){
+          if (event.type == SDL_QUIT) {
+             should_quit = true;
+             break;
+          }
         /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
         //gameScene->Update(event);
          currentScene->Update(event);
