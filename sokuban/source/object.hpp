@@ -10,6 +10,14 @@ enum ObjectLayer {
     ObjectLayerForeground = 1
 };
 
+enum ObjectType {
+    ObjectTypeUndefined = 0,
+    ObjectTypeWall = 1,
+    ObjectTypeBox = 2,
+    ObjectTypePlayer = 3,
+    ObjectTypeDestination = 4
+};
+
 struct object
 {
 public:
@@ -32,6 +40,11 @@ public:
     virtual void Draw();
 
     virtual bool Move(vec2d amount);
+
+    virtual ObjectType GetObjectType() {
+        return ObjectTypeUndefined;
+    }
+
 protected:
     GameMap *gmap;
     SDL_Texture *texture;
@@ -48,6 +61,11 @@ public:
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override;
+    friend class SaveButton;
+
+    ObjectType GetObjectType() override{
+        return ObjectTypePlayer;
+    }
 };
 
 struct box: public object
@@ -64,6 +82,10 @@ public:
     }
 
     bool Move(vec2d amount) override;
+
+    ObjectType GetObjectType() override{
+        return ObjectTypeBox;
+    }
 };
 
 
@@ -78,8 +100,16 @@ public:
     virtual bool Move(vec2d amount) {
         return false;
     }
+
+    ObjectType GetObjectType() override{
+        return ObjectTypeWall;
+    }
 };
 struct destination: public object
 {
     destination(GameMap *state_);
+
+    ObjectType GetObjectType() override{
+        return ObjectTypeDestination;
+    }
 };

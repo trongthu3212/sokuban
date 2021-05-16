@@ -3,12 +3,50 @@
 #include "menu_scene.hpp"
 #include "size.hpp"
 
+#include "SG_InputBox.hpp"
+#include <stdlib.h>
+#include <sstream>
+#include <fstream>
+
 void StartButton::Execute() {
    GameState *state = scene->GetState();
    state->currentScene = state->gameScene;
+
+   if (!state->saveLoadedFirst) {
+        state->gameScene->Load();
+        state->saveLoadedFirst = true;
+   }
+}
+
+static void DisplayLevelErrorDialog(SDL_Window *window) {
+    SDL_ShowSimpleMessageBox(0, "Failure", "The level number does not exist or is invalid!", window);
 }
 
 void LevelSelectButton::Execute() {
+    LPSTR result = SG_InputBox::GetString("Please enter the level number", "Enter the number", "1");
+    int newlevel = 0;
+    try {
+        newlevel = std::stoi(result);
+    } catch (std::exception const &e) {
+        DisplayLevelErrorDialog(state->window);
+        return;
+    }
+
+    std::stringstream ss;
+    ss << newlevel;
+    std::string xaulevel = ss.str();
+
+    std::ifstream mapfile("map" + xaulevel + ".txt");
+    if (!mapfile.good()) {
+        DisplayLevelErrorDialog(state->window);
+        return;
+    }
+
+    state->gameScene->level = newlevel;
+
+   GameState *state = scene->GetState();
+   state->currentScene = state->gameScene;
+   state->gameScene->SwitchMap();
 }
 
 

@@ -97,7 +97,7 @@ void object::Draw() {
 }
 
  player::player(GameMap *state_) :object(state_){
-        texture = gmap->state->get_texture_manager()->Load("player.bmp");
+        texture = gmap->state->get_texture_manager()->Load("player.png");
         layer = ObjectLayerForeground;
     }
 
@@ -115,7 +115,7 @@ void object::Draw() {
  }*/
 
  destination::destination(GameMap *state_) :object(state_){
-        texture = gmap->state->get_texture_manager()->Load("destination.bmp");
+        texture = gmap->state->get_texture_manager()->Load("destination.png");
         layer = ObjectLayerBackground;
  }
 

@@ -7,6 +7,9 @@
 struct GameState {
 private:
     friend class StartButton;
+    friend class HomeButton;
+    friend class SaveButton;
+    friend class LevelSelectButton;
 
     SDL_Window *window;
     SDL_Renderer *renderer;
@@ -15,6 +18,8 @@ private:
     GameScene *gameScene;
     MenuScene *menuScene;
     Scene *currentScene ;
+
+    bool saveLoadedFirst;
 
 public:
     GameState();

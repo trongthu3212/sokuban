@@ -72,6 +72,7 @@ void GameMap::load(std::string path){
                         // Them object Box vao mang
                         foreground[i][line] = new box(this);
                         foreground[i][line]->set_pos(i, line);
+                        boxquantites ++;
                         break;
                     case 'x':
                         // Them nguoi choi vao mang
