@@ -9,6 +9,7 @@ private:
     friend class StartButton;
     friend class HomeButton;
     friend class SaveButton;
+    friend class LevelSelectButton;
 
     SDL_Window *window;
     SDL_Renderer *renderer;

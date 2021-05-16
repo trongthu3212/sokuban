@@ -60,6 +60,7 @@ public:
     GameScene(GameState *state_);
     ~GameScene();
     friend class SaveButton;
+    friend class LevelSelectButton;
 
     void Update(const SDL_Event &evt) override;
     void Draw() override;
