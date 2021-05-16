@@ -2,9 +2,11 @@
 #include "gamestate.hpp"
 #include "gamemap.hpp"
 #include "size.hpp"
+#include "object.hpp"
 
 #include <sstream>
 #include<fstream>
+#include<cmath>
 
 void RestartButton::Execute() {
     scene->SwitchMap();
@@ -33,12 +35,32 @@ GameScene::GameScene(GameState *state_)
 
 }
 
-void SaveButton::Execute(){
+void SaveButton::Execute()
+{
    std::ofstream savefile("savemap.txt");
     savefile << scene->gmap->control->pos.x << " "<<scene->gmap->control->pos.y << std::endl;
     savefile << scene->gmap->boxquantites << std::endl;
-    savefile << scene->level ;
-    //savefile << box.x << " " << box.y << endl;
+    savefile << scene->level << std::endl ;
+    int dem =0;
+     for(int i=0;i<scene->gmap->width;i++)
+    {
+            for(int j=0;j<scene->gmap->height;j++)
+        {
+                if(scene->gmap->foreground[i][j]!=NULL)
+            {
+                    object::GetObjectType ;
+                    if ( scene->gmap->foreground[i][j]->GetObjectType() == ObjectTypeBox )
+                        {
+                            savefile << i << " "<< j <<std::endl;
+                            dem++;
+                        }
+                if(dem == scene->gmap->boxquantites)
+                    {break;}
+
+
+            }
+        }
+    }
     savefile.close();
 }
 
