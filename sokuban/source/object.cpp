@@ -16,6 +16,11 @@ object::~object() {
         gmap->state->get_texture_manager()->Unload(texture);
     }
 
+box::~box() {
+    gmap->state->get_texture_manager()->Unload(boxNormal);
+    gmap->state->get_texture_manager()->Unload(boxcolor);
+}
+
 void player::OnKeyPress(int key_code) {
         vec2d moveAmount;
 

@@ -70,12 +70,13 @@ public:
 
 struct box: public object
 {
-public:
-    box(GameMap *state_);
+private:
      SDL_Texture*boxcolor;
      SDL_Texture*boxNormal;
 
-
+public:
+    box(GameMap *state_);
+    ~box() override;
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
