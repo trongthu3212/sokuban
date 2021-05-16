@@ -54,6 +54,10 @@ struct box: public object
 {
 public:
     box(GameMap *state_);
+     SDL_Texture*boxcolor;
+     SDL_Texture*boxNormal;
+
+
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override{
@@ -61,6 +65,7 @@ public:
 
     bool Move(vec2d amount) override;
 };
+
 
 struct wall: public object
 {

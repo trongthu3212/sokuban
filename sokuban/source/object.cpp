@@ -67,6 +67,7 @@ bool box::Move(vec2d amount){
 
         if(gmap->background[pos.x][pos.y]) {
             gmap->pointChecked--;
+            texture=boxNormal;
         }
 
         vec2d oldPos = pos;
@@ -74,7 +75,9 @@ bool box::Move(vec2d amount){
 
          if(gmap->background[pos.x][pos.y]) {
             gmap->pointChecked++;
+            texture=boxcolor;
         }
+
 
         std::swap(gmap->foreground[oldPos.x][oldPos.y], gmap->foreground[pos.x][pos.y]);
 
@@ -99,9 +102,17 @@ void object::Draw() {
     }
 
  box::box(GameMap *state_) :object(state_){
-        texture = gmap->state->get_texture_manager()->Load("box.bmp");
+
+        boxcolor = gmap->state->get_texture_manager()->Load("boxColor.bmp");
+        boxNormal= gmap->state->get_texture_manager()->Load("box.bmp");
+       texture=boxNormal;
         layer = ObjectLayerForeground;
  }
+ /*
+ boxColor::boxColor(GameMap *state_) :object(state_){
+        texture = gmap->state->get_texture_manager()->Load("boxColor.bmp");
+        layer = ObjectLayerForeground;
+ }*/
 
  destination::destination(GameMap *state_) :object(state_){
         texture = gmap->state->get_texture_manager()->Load("destination.bmp");
