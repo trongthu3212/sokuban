@@ -34,6 +34,17 @@ public:
     void Execute() override;
 };
 
+class SaveButton:public Button{
+private:
+    GameScene *scene;
+public:
+    SaveButton(GameState *state_,GameScene*scene_)
+        :Button(state_, "save.png"){
+        scene = scene_;
+        }
+    void Execute() override;
+};
+
 class GameScene: public Scene {
 private:
     GameMap *gmap;
@@ -41,12 +52,14 @@ private:
     SDL_Texture *restartTexture;
     RestartButton restartBtn;
     HomeButton homeBtn;
+    SaveButton saveBtn;
 
     int level=1;
 
 public:
     GameScene(GameState *state_);
     ~GameScene();
+    friend class SaveButton;
 
     void Update(const SDL_Event &evt) override;
     void Draw() override;

@@ -32,4 +32,5 @@ struct GameMap{
 
     vec2d start_pos;
     int boxsize;
+    int boxquantites = 0;
 };

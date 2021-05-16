@@ -8,6 +8,7 @@ struct GameState {
 private:
     friend class StartButton;
     friend class HomeButton;
+    friend class SaveButton;
 
     SDL_Window *window;
     SDL_Renderer *renderer;

@@ -4,6 +4,7 @@
 #include "size.hpp"
 
 #include <sstream>
+#include<fstream>
 
 void RestartButton::Execute() {
     scene->SwitchMap();
@@ -16,7 +17,8 @@ void HomeButton::Execute() {
 GameScene::GameScene(GameState *state_)
     : Scene(state_)
     , restartBtn(state_, this)
-    , homeBtn(state_, this) {
+    , homeBtn(state_, this)
+    , saveBtn (state_, this) {
     gmap = new GameMap(state_);
     gmap->load("map1.txt");
 
@@ -25,6 +27,18 @@ GameScene::GameScene(GameState *state_)
 
     homeBtn.SetSize({ 50, 50 });
     homeBtn.SetPosition({ 70, 10 });
+
+    saveBtn.SetSize({50,50});
+    saveBtn.SetPosition({130,10});
+
+}
+
+void SaveButton::Execute(){
+   std::ofstream savefile("savemap.txt");
+   // savefile << scene->gmap->player->x << " "<<scene->gmap->player->y << std::endl;
+    savefile << scene->gmap->boxquantites ;
+    //savefile << box.x << " " << box.y << endl;
+    savefile.close();
 }
 
 GameScene::~GameScene() {
@@ -62,6 +76,7 @@ void GameScene::Update(const SDL_Event &event) {
 
         restartBtn.OnMousePressed(event.button.button, x, y);
         homeBtn.OnMousePressed(event.button.button, x, y);
+       // saveBtn.OnMousePressed(event.button.button, x, y);
         break;
     }
 
@@ -79,6 +94,7 @@ void GameScene::Draw() {
     gmap->draw();
     restartBtn.Draw();
     homeBtn.Draw();
+    saveBtn.Draw();
 }
 
 
