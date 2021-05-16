@@ -36,7 +36,8 @@ GameScene::GameScene(GameState *state_)
 void SaveButton::Execute(){
    std::ofstream savefile("savemap.txt");
     savefile << scene->gmap->control->pos.x << " "<<scene->gmap->control->pos.y << std::endl;
-    savefile << scene->gmap->boxquantites ;
+    savefile << scene->gmap->boxquantites << std::endl;
+    savefile << scene->level ;
     //savefile << box.x << " " << box.y << endl;
     savefile.close();
 }
