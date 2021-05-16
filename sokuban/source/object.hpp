@@ -48,6 +48,7 @@ public:
 
     //override OnKeyPress va viet thuat toan di chuyen cho Player
     void OnKeyPress(int key_code) override;
+    friend class SaveButton;
 };
 
 struct box: public object

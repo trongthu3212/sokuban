@@ -35,7 +35,7 @@ GameScene::GameScene(GameState *state_)
 
 void SaveButton::Execute(){
    std::ofstream savefile("savemap.txt");
-   // savefile << scene->gmap->player->x << " "<<scene->gmap->player->y << std::endl;
+    savefile << scene->gmap->control->pos.x << " "<<scene->gmap->control->pos.y << std::endl;
     savefile << scene->gmap->boxquantites ;
     //savefile << box.x << " " << box.y << endl;
     savefile.close();
@@ -76,7 +76,7 @@ void GameScene::Update(const SDL_Event &event) {
 
         restartBtn.OnMousePressed(event.button.button, x, y);
         homeBtn.OnMousePressed(event.button.button, x, y);
-       // saveBtn.OnMousePressed(event.button.button, x, y);
+        saveBtn.OnMousePressed(event.button.button, x, y);
         break;
     }
 

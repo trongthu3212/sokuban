@@ -16,4 +16,5 @@ struct vec2d {
     float length();
     vec2d operator + (vec2d vephai);
     vec2d operator - (vec2d vephai);
+
 };
