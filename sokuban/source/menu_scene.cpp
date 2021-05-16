@@ -6,6 +6,11 @@
 void StartButton::Execute() {
    GameState *state = scene->GetState();
    state->currentScene = state->gameScene;
+
+   if (!state->saveLoadedFirst) {
+        state->gameScene->Load();
+        state->saveLoadedFirst = true;
+   }
 }
 
 void LevelSelectButton::Execute() {

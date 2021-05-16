@@ -18,6 +18,8 @@ private:
     MenuScene *menuScene;
     Scene *currentScene ;
 
+    bool saveLoadedFirst;
+
 public:
     GameState();
     ~GameState();

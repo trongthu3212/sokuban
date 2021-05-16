@@ -64,4 +64,7 @@ public:
     void Update(const SDL_Event &evt) override;
     void Draw() override;
     void SwitchMap();
+
+    void Save();
+    void Load();
 };

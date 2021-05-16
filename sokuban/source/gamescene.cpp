@@ -13,6 +13,7 @@ void RestartButton::Execute() {
 }
 
 void HomeButton::Execute() {
+    scene->Save();
     scene->GetState()->currentScene = scene->GetState()->menuScene;
 }
 
@@ -37,31 +38,7 @@ GameScene::GameScene(GameState *state_)
 
 void SaveButton::Execute()
 {
-   std::ofstream savefile("savemap.txt");
-    savefile << scene->gmap->control->pos.x << " "<<scene->gmap->control->pos.y << std::endl;
-    savefile << scene->gmap->boxquantites << std::endl;
-    savefile << scene->level << std::endl ;
-    int dem =0;
-     for(int i=0;i<scene->gmap->width;i++)
-    {
-            for(int j=0;j<scene->gmap->height;j++)
-        {
-                if(scene->gmap->foreground[i][j]!=NULL)
-            {
-                    object::GetObjectType ;
-                    if ( scene->gmap->foreground[i][j]->GetObjectType() == ObjectTypeBox )
-                        {
-                            savefile << i << " "<< j <<std::endl;
-                            dem++;
-                        }
-                if(dem == scene->gmap->boxquantites)
-                    {break;}
-
-
-            }
-        }
-    }
-    savefile.close();
+    scene->Save();
 }
 
 GameScene::~GameScene() {
@@ -120,4 +97,90 @@ void GameScene::Draw() {
     saveBtn.Draw();
 }
 
+void GameScene::Save() {
+    std::ofstream savefile("savemap.txt");
+    savefile << level << std::endl ;
+    savefile << gmap->control->get_pos().x << " "<< gmap->control->get_pos().y << std::endl;
+    savefile << gmap->boxquantites << std::endl;
+    int dem =0;
+     for(int i=0;i<gmap->width;i++)
+    {
+            for(int j=0;j<gmap->height;j++)
+        {
+                if(gmap->foreground[i][j]!=NULL)
+            {
+                    if ( gmap->foreground[i][j]->GetObjectType() == ObjectTypeBox )
+                        {
+                            savefile << i << " "<< j <<std::endl;
+                            dem++;
+                        }
+                if(dem == gmap->boxquantites)
+                    {break;}
 
+
+            }
+        }
+    }
+    savefile.close();
+}
+
+void GameScene::Load() {
+    std::ifstream loadfile("savemap.txt");
+    if (!loadfile.good()) {
+        return;
+    }
+    loadfile >> level;
+
+    int x, y;
+
+    SwitchMap();
+    loadfile >> x >> y;
+
+    vec2d prevpos = gmap->control->get_pos();
+
+    gmap->control->set_pos(x, y);
+    gmap->foreground[prevpos.x][prevpos.y] = nullptr;
+    gmap->foreground[x][y] = gmap->control;
+
+    int boxcount = 0;
+    int dem = 0;
+    loadfile >> boxcount;
+
+     for(int i=0;i<gmap->width;i++)
+    {
+            for(int j=0;j<gmap->height;j++)
+        {
+                if(gmap->foreground[i][j]!=NULL)
+            {
+                    if ( gmap->foreground[i][j]->GetObjectType() == ObjectTypeBox )
+                        {
+                            delete gmap->foreground[i][j];
+                            gmap->foreground[i][j] = nullptr;
+                            dem++;
+                        }
+
+
+                if(dem == boxcount)
+                    {break;}
+
+
+            }
+        }
+    }
+
+    gmap->pointChecked = 0;
+
+    for (int i = 0; i < boxcount; i++) {
+        int x, y;
+        loadfile >> x >> y;
+
+        gmap->foreground[x][y] = new box(gmap);
+        gmap->foreground[x][y]->set_pos(x, y);
+
+        if (gmap->background[x][y] && (gmap->background[x][y]->GetObjectType() == ObjectTypeDestination)) {
+            gmap->pointChecked++;
+        }
+    }
+
+    loadfile.close();
+}

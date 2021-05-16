@@ -14,6 +14,8 @@ GameState::GameState() {
     gameScene = new GameScene(this);
     menuScene= new MenuScene(this);
     currentScene =menuScene;
+
+    saveLoadedFirst = false;
 }
 
 GameState::~GameState() {
