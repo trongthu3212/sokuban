@@ -52,7 +52,7 @@ void player::OnKeyPress(int key_code) {
 
         Move(moveAmount);
     }
-
+// kiem tra vat can khi player di chuyen
 bool object::Move(vec2d amount) {
     if (!gmap->foreground[pos.x + amount.x][pos.y + amount.y] || (gmap->foreground[pos.x + amount.x][pos.y + amount.y]->Move(amount))) {
         vec2d oldPos = pos;
@@ -65,6 +65,7 @@ bool object::Move(vec2d amount) {
 
     return false;
 }
+// kiem tra lieu box co the di chuyen tiep hay khong
 bool box::Move(vec2d amount){
         if (gmap->foreground[pos.x + amount.x][pos.y + amount.y]) {
             return false;
@@ -89,7 +90,7 @@ bool box::Move(vec2d amount){
         return true;
 
 }
-
+// ham ve cua cac vat the
 void object::Draw() {
     SDL_Rect dest_rect;
 
