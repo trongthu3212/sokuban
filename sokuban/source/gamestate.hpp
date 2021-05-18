@@ -4,6 +4,7 @@
 #include "gamescene.hpp"
 #include "menu_scene.hpp"
 
+// Biểu hiện một thể thống game hoàn chỉnh
 struct GameState {
 private:
     friend class StartButton;
@@ -11,15 +12,15 @@ private:
     friend class SaveButton;
     friend class LevelSelectButton;
 
-    SDL_Window *window;
-    SDL_Renderer *renderer;
-    TextureManager manager;
+    SDL_Window *window;         // Cửa sổ chính trò chơi
+    SDL_Renderer *renderer;     // Renderer chính trò chơi
+    TextureManager manager;     // Quản lý ảnh trò chơi
 
-    GameScene *gameScene;
-    MenuScene *menuScene;
-    Scene *currentScene ;
+    GameScene *gameScene;       // Màn game
+    MenuScene *menuScene;       // Màn menu
+    Scene *currentScene ;       // Màn hiện tại người chơi đang ở
 
-    bool saveLoadedFirst;
+    bool saveLoadedFirst;       // Biến để check nếu lần đầu người chơi mở game, save đã được load lại chưa.
 
 public:
     GameState();

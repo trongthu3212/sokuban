@@ -10,6 +10,7 @@ struct TextureInfo {
     SDL_Texture *tex;
 };
 
+// Quản lý việc sử dụng các ảnh trong trò chơi
 class TextureManager {
 private:
     std::map<std::string, TextureInfo> texs;
@@ -21,6 +22,9 @@ public:
 
     ~TextureManager();
 
+    // Tải một ảnh mới, có thể kiểm tra những ảnh đã tải để không tốn thêm công sức tải lại
     SDL_Texture *Load(std::string path);
+
+    // Bỏ tải một ảnh trước đó.
     void Unload(SDL_Texture *tex);
 };

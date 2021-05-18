@@ -64,8 +64,13 @@ public:
 
     void Update(const SDL_Event &evt) override;
     void Draw() override;
+
+    // Đổi sang map mới tương ứng biến level hiện tại
     void SwitchMap();
 
+    // Lưu game hiện tại
     void Save();
+
+    // Mở lại game hiện tại nếu có
     void Load();
 };
